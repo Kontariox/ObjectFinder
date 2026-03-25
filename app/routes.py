@@ -1,11 +1,10 @@
 from flask import Blueprint, render_template, request
-from .vehicle import vehicle
 
 main = Blueprint("main", __name__)
 
 @main.route("/")
 def index():
-    return render_template("index.html", vehicle=vehicle)
+    return render_template("index.html")
 
 @main.route("/control", methods=["POST"])
 def control():
@@ -24,4 +23,4 @@ def control():
         #prawo
         pass #do usuniecia
 
-    return render_template("index.html", vehicle=vehicle)
+    return render_template("index.html")
