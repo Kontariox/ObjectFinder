@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pojazd</title>
+</head>
+<body>
+    <h1>Sterowanie</h1>
+
+    <p>Prędkość: {{ vehicle.speed }}</p>
+    <p>Kierunek: {{ vehicle.direction }}</p>
+
+    <form method="post" action="/control">
+        <button name="action" value="forward">Przód</button>
+        <button name="action" value="backward">Tył</button>
+        <button name="action" value="left">Lewo</button>
+        <button name="action" value="right">Prawo</button>
+        <button name="action" value="stop">STOP</button>
+    </form>
+</body>
+</html>
