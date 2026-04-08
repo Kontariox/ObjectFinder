@@ -15,8 +15,8 @@ picam2.configure(
 picam2.start()
 
 # Zakres koloru pomarańczowego (HSV)
-dolny_pomarancz = np.array([0, 100, 100])
-gorny_pomarancz = np.array([0, 50, 100])
+dolny_pomarancz = np.array([0, 70, 155])
+gorny_pomarancz = np.array([35, 200, 230])
 
 
 def generate_frames():
