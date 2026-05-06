@@ -13,7 +13,7 @@ picam2.set_controls(
     {
         "AeEnable": False,
         "AwbEnable": False,
-        "ExposureTime": 10000,
+        "ExposureTime": 100000,
         "AnalogueGain": 1.5,
     }
 )
