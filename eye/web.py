@@ -19,9 +19,6 @@ def set_color_route():
     res = processing.set_color(x, y)
     return jsonify(res)
 
-
-<<<<<<< HEAD
-
 @app.route('/set_mode', methods=['POST'])
 def set_mode_route():
     data = request.json
@@ -35,9 +32,6 @@ def detect_floor_route():
     res = processing.detect_floor()
     return jsonify(res)
 
-
-=======
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc
 @app.route('/')
 def index():
     return '''
@@ -46,7 +40,6 @@ def index():
             <h1>Kliknij w obraz, aby wybrać kolor</h1>
             <p>Po kliknięciu zakres HSV ustawi się automatycznie</p>
 
-<<<<<<< HEAD
             <div>
                 <label><input type="radio" name="mode" value="mark_selected" checked> Zaznacz wybrany kolor</label>
                 <label><input type="radio" name="mode" value="mark_floor"> Zaznacz podłogę</label>
@@ -55,9 +48,6 @@ def index():
             </div>
 
             <img id="video" src="/video" style="cursor: crosshair; max-width: 100%; display:block; margin-top:10px;">
-=======
-            <img id="video" src="/video" style="cursor: crosshair; max-width: 100%;">
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc
 
             <script>
             const img = document.getElementById("video");
@@ -75,7 +65,7 @@ def index():
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({x: x, y: y})
-<<<<<<< HEAD
+
                 }).then(()=>{
                     // switch mode to selected
                     document.querySelector('input[value="mark_selected"]').checked = true;
@@ -93,8 +83,6 @@ def index():
                 fetch('/detect_floor', {method:'POST'}).then(()=>{
                     document.querySelector('input[value="mark_floor"]').checked = true;
                     fetch('/set_mode', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({mode:'mark_floor'})});
-=======
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc
                 });
             });
             </script>

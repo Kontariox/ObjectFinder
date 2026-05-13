@@ -1,6 +1,5 @@
 from picamera2 import Picamera2
 import threading
-<<<<<<< HEAD
 import time
 
 picam2 = None
@@ -30,34 +29,18 @@ def start_camera():
             "AwbEnable": False,
             "ExposureTime": 10000,
             "AnalogueGain": 1.5,
-            "ScalerCrop": (0, 0, 3280, 2464)
         }
     )
 
     picam2.start()
-    
 
     threading.Thread(target=_capture_frames, daemon=True).start()
 
     _started = True
-=======
-
-picam2 = Picamera2()
-picam2.configure(
-    picam2.create_preview_configuration(
-        main={"format": "RGB888", "size": (640, 480)}
-    )
-)
-picam2.start()
-
-_latest_frame = None
-_lock = threading.Lock()
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc
 
 
 def _capture_frames():
     global _latest_frame
-<<<<<<< HEAD
 
     while True:
         frame = picam2.capture_array()
@@ -77,19 +60,3 @@ def get_frame_copy():
             return None
 
         return _latest_frame.copy()
-=======
-    while True:
-        frame = picam2.capture_array()
-        with _lock:
-            _latest_frame = frame
-
-
-threading.Thread(target=_capture_frames, daemon=True).start()
-
-
-def get_frame_copy():
-    with _lock:
-        if _latest_frame is None:
-            return None
-        return _latest_frame.copy()
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc

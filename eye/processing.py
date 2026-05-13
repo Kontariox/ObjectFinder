@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 from camera import get_frame_copy
 
-<<<<<<< HEAD
 # Selected HSV range (from click)
 dolny = np.array([15, 120, 120], dtype=np.uint8)
 gorny = np.array([55, 255, 255], dtype=np.uint8)
@@ -18,21 +17,12 @@ mode = 'mark_selected'
 def generate_frames():
     global dolny, gorny, floor_dolny, floor_gorny, mode
 
-=======
-# HSV zakres (dynamiczny)
-dolny = np.array([15, 120, 120], dtype=np.uint8)
-gorny = np.array([55, 255, 255], dtype=np.uint8)
-
-
-def generate_frames():
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc
     while True:
         frame = get_frame_copy()
         if frame is None:
             continue
 
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-<<<<<<< HEAD
 
         if mode == 'mark_floor':
             mask = cv2.inRange(hsv, floor_dolny, floor_gorny)
@@ -46,9 +36,6 @@ def generate_frames():
 
         mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
         mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-=======
-        mask = cv2.inRange(hsv, dolny, gorny)
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc
 
         contours, _ = cv2.findContours(
             mask,
@@ -69,13 +56,8 @@ def generate_frames():
 
 
 def set_color(x: int, y: int):
-<<<<<<< HEAD
     """Set HSV range based on pixel at (x, y). Switches mode to mark_selected."""
     global dolny, gorny, mode
-=======
-    """Set HSV range based on pixel at (x, y). Returns a dict with status."""
-    global dolny, gorny
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc
 
     frame = get_frame_copy()
     if frame is None:
@@ -106,7 +88,6 @@ def set_color(x: int, y: int):
         min(v + tol_v, 255)
     ], dtype=np.uint8)
 
-<<<<<<< HEAD
     mode = 'mark_selected'
 
     return {"status": "ok", "dolny": dolny.tolist(), "gorny": gorny.tolist()}
@@ -158,6 +139,3 @@ def set_mode(new_mode: str):
     mode = new_mode
     return {"status": "ok", "mode": mode}
 
-=======
-    return {"status": "ok", "dolny": dolny.tolist(), "gorny": gorny.tolist()}
->>>>>>> 3407950cd27d45708d08c2ffa3995018b0296dfc
